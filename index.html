@@ -86,7 +86,7 @@
 
         .hero-header-text {
             font-family: 'Friz', serif;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             /* position: absolute;
             top: 3rem;
             left: 50%;
@@ -136,8 +136,8 @@
             font-weight: bold;
             font-size: 4.9rem;
             font-family: 'Courier New', monospace;
-            color: #00b56a;
-            animation: typing 3s steps(6, end) forwards, blink 0.7s step-end infinite;
+            color: #01653b;
+            /* animation: typing 3s steps(6, end) forwards, blink 0.7s step-end infinite; */
         }
 
         @keyframes typing {
@@ -150,7 +150,7 @@
             }
         }
 
-        @keyframes blink {
+        /* @keyframes blink {
 
             from,
             to {
@@ -160,7 +160,7 @@
             50% {
                 border-color: #00b56a
             }
-        }
+        } */
 
         .draw-letter {
             stroke-dasharray: 100;
@@ -232,12 +232,14 @@
         }
 
         .typewriter-line1 {
-            animation: typing-line1 3s steps(35, end) forwards;
+            /* border-right: 2px solid #00b56a; */
+            /* animation: typing-line1 2.5s steps(35, end) forwards, blink 0.7s step-end infinite; */
+            animation: typing-line1 2.5s steps(70, end) forwards;
             overflow: hidden;
-            border-right: none;
+            /* border-right: none; */
             white-space: nowrap;
             display: inline-block;
-            font-weight: bold;
+            font-weight: lighter;
             font-size: 5rem;
             font-family: 'EB Garamond', serif;
             color: #090004;
@@ -247,15 +249,17 @@
         }
 
         .typewriter-line2 {
-            animation: typing-line2 1.5s steps(18, end) 3.2s forwards;
+            /* border-right: 2px solid #00b56a; */
+            /* animation: typing-line2 1.2s steps(18, end) 3.2s forwards, blink 0.7s step-end infinite 4.4s; */
+            animation: typing-line2 1.2s steps(36, end) 2s forwards;
             overflow: hidden;
-            border-right: none;
+            /* border-right: none; */
             white-space: nowrap;
             display: inline-block;
             font-weight: bold;
             font-size: 5rem;
             font-family: 'EB Garamond', serif;
-            color: #090004;
+            color: #0c0a32;
             visibility: hidden;
             animation-fill-mode: forwards;
             letter-spacing: -0.5px;
@@ -266,11 +270,11 @@
         @keyframes typing-line1 {
             0% {
                 width: 0;
-                border-right: 2px solid #00b56a;
+                
             }
 
             100% {
-                width: 35ch;
+                width: 50ch;
                 border-right: none;
             }
         }
@@ -279,7 +283,7 @@
             0% {
                 width: 0;
                 visibility: visible;
-                border-right: 2px solid #00b56a;
+                
             }
 
             100% {
@@ -303,7 +307,7 @@
         }
 
         .hero-text {
-            margin-top: auto;
+            margin-top: 10rem;
             margin-bottom: auto;
         }
 
@@ -474,12 +478,21 @@
             background-color: #ccc;
             margin: 1rem auto;
         }
+
+        .hero-top-left-logo {
+            position: absolute;
+            top: 0.7rem;
+            left: 1.5rem;
+            height: 60px;
+            z-index: 10;
+        }
     </style>
 </head>
 
 <body>
     <div class="hero" id="section-1">
         <div class="hero-header-text">INTERNATIONAL BOARD SINGAPORE</div>
+        <img src="./public/assets/wordmark_circle.png" alt="Circle Logo" class="hero-top-left-logo" />
         <div class="animated-underline"></div>
         <h1 class="hero-text">
             <span class="typewriter-wrapper">
@@ -487,44 +500,36 @@
                 <span class="typewriter-line2">next generation.</span>
             </span>
         </h1>
-        <!-- <img src="./public/assets/down_arrow.png" alt="Logo" /> -->
-        <!-- Scroll Indicator Arrow -->
-        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 1rem; right: 2rem; height: 50px;" /> -->
+        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 1rem; right: 2rem; height: 50px;" />
     </div>
-
-
-
-
 
     <section class="idea-section" id="section-3">
         <div class="idea-content">
             <div class="idea-text">
                 <h2 class="idea-heading">The Idea</h2>
                 <h2 class="idea-subheading">The secret to good education</h2>
-                <p>The foundation of great education lies in nurturing curiosity and encouraging independent thinking.
+                <p>The foundation of great education lies in building curiosity and encouraging independent thinking.
                 </p>
-                <p>By blending technology with proven pedagogy, we ensure students not only learn but love to learn.
+                <p>
+                    We believe that children learn best when they are engaged, motivated, and given the freedom to explore
+                    their interests.</p>
                 </p>
             </div>
             <img src="./public/assets/idea_6.jpg" alt="Idea Illustration" class="idea-image" />
         </div>
-        <!-- Scroll Indicator Arrow -->
-        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
+        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" />
     </section>
     <section class="idea-section" id="section-4">
         <div class="idea-content">
             <div class="idea-text">
                 <h2 class="idea-heading">Long Term Vision</h2>
                 <h2 class="idea-subheading">Where we're going</h2>
-                <p>Our vision is to transform how education is delivered across the globe—personalized, scalable, and
-                    effective.</p>
-                <p>In the long term, we foresee a world where quality education is accessible, empowering every child to
-                    thrive in the future economy.</p>
+                <p>We’re building a future where children grow up confident, curious, and capable.</p>
+                <p>Our vision is global, equitable learning rooted in independent thinking and purpose.</p>
             </div>
             <img src="./public/assets/idea_5.jpg" alt="Idea Illustration" class="idea-image" />
         </div>
-        <!-- Scroll Indicator Arrow -->
-        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
+        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" />
     </section>
     <section class="idea-section" id="section-5">
         <div class="idea-content">
@@ -532,12 +537,11 @@
                 <h2 class="idea-heading">Products</h2>
                 <h2 class="idea-subheading">Where we are</h2>
                 <p>Our programs spark curiosity, build confidence, and fit seamlessly into family life.</p>
-                <p>Designed for real-world learning, they nurture thoughtful, independent learners—one day at a time.</p>
+                <p>Designed for real-world learning, they incorporate education into everyday activities.</p>
             </div>
             <img src="./public/assets/idea_4.jpeg" alt="Idea Illustration" class="idea-image" />
         </div>
-        <!-- Scroll Indicator Arrow -->
-        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
+        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" />
     </section>
 
     <section class="mailing-footer-section" id="section-6"
@@ -580,10 +584,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
         gsap.registerPlugin(ScrollTrigger);
-
-        // Pin Hero
-
-        // Fade in Sections
         gsap.utils.toArray(".section").forEach(section => {
             gsap.from(section, {
                 scrollTrigger: {
@@ -610,13 +610,6 @@
                 duration: 1
             });
         });
-    </script>
-    <script>
-        /*
-        $(document).ready(function () {
-          $('.mailing-list-section').appendTo('.hero');
-        });
-        */
     </script>
 </body>
 
