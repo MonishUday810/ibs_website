@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sequoia Style Scroll Animation</title>
+    <style>
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .bounce-arrow {
+            animation: bounce 1.2s infinite;
+        }
+        html, body {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100%;
+            scroll-padding-top: 0;
+            scroll-padding-bottom: 0vh;
+        }
+        :root {
+            --bg-color: #f9edda;
+            --bg-color-secondary: #fbf7f0
+            /* #f9fffb - green
+            #fbf7f0 - yellow
+            #f1f2e5 - olive */
+            --raleway-400: 'Raleway', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Friz';
+            src: url('public/assets/Friz.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: #000000;
+            overflow-x: hidden;
+            height: 100%;
+            /* overflow-y: hidden; */
+        }
+
+        html, body {
+            /* scroll-snap-type: y mandatory; */
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(to bottom, var(--bg-color-secondary) 0%, var(--bg-color) 100%);
+            margin-bottom: 0;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+        }
+
+        .hero-header-text {
+            font-family: 'Friz', serif;
+            font-size: 2.5rem;
+            /* position: absolute;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; */
+            position: relative;
+            margin-top: 2rem;
+            text-align: center;
+            color: #000000;
+            letter-spacing: 0.1rem;
+            white-space: nowrap;
+            /* background-image: url('./public/assets/world.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat; */
+        }
+
+        .highlight-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-word {
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .caret-animation {
+            display: none;
+        }
+
+        .write-animation {
+            display: inline-block;
+            border-right: 2px solid #00b56a;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: bold;
+            font-size: 4.9rem;
+            font-family: 'Courier New', monospace;
+            color: #00b56a;
+            animation: typing 3s steps(6, end) forwards, blink 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 6ch
+            }
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #00b56a
+            }
+        }
+
+        .draw-letter {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: draw 0.5s ease forwards;
+        }
+
+        .draw-letter:nth-child(1) {
+            animation-delay: 2.2s;
+        }
+
+        .draw-letter:nth-child(2) {
+            animation-delay: 2.7s;
+        }
+
+        .draw-letter:nth-child(3) {
+            animation-delay: 3.2s;
+        }
+
+        .draw-letter:nth-child(4) {
+            animation-delay: 3.7s;
+        }
+
+        .draw-letter:nth-child(5) {
+            animation-delay: 4.2s;
+        }
+
+        .draw-letter:nth-child(6) {
+            animation-delay: 4.7s;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes caretFade {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes typewriter {
+            to {
+                width: 6ch;
+            }
+        }
+
+        .section {
+            min-height: 100vh;
+            overflow: visible;
+            padding: 4rem 2rem;
+            font-size: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            background-color: var(--bg-color);
+            margin-bottom: 0;
+            padding-bottom: 2rem;
+            /* scroll-snap-align: start; */
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+
+        .section:nth-child(odd) {
+            background-color: var(--bg-color);
+        }
+
+        .typewriter-line1 {
+            animation: typing-line1 3s steps(35, end) forwards;
+            overflow: hidden;
+            border-right: none;
+            white-space: nowrap;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 5rem;
+            font-family: 'EB Garamond', serif;
+            color: #090004;
+            letter-spacing: -0.5px;
+            /* font-family: var(--raleway-400); */
+            margin-bottom: -1.5rem;
+        }
+
+        .typewriter-line2 {
+            animation: typing-line2 1.5s steps(18, end) 3.2s forwards;
+            overflow: hidden;
+            border-right: none;
+            white-space: nowrap;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 5rem;
+            font-family: 'EB Garamond', serif;
+            color: #090004;
+            visibility: hidden;
+            animation-fill-mode: forwards;
+            letter-spacing: -0.5px;
+            /* font-family: var(--raleway-400); */
+            margin-bottom: -1.5rem;
+        }
+
+        @keyframes typing-line1 {
+            0% {
+                width: 0;
+                border-right: 2px solid #00b56a;
+            }
+
+            100% {
+                width: 35ch;
+                border-right: none;
+            }
+        }
+
+        @keyframes typing-line2 {
+            0% {
+                width: 0;
+                visibility: visible;
+                border-right: 2px solid #00b56a;
+            }
+
+            100% {
+                width: 18ch;
+                visibility: visible;
+                border-right: none;
+            }
+        }
+
+        .typewriter-wrapper {
+            display: inline-block;
+            width: auto;
+            vertical-align: bottom;
+        }
+
+        .hero-header-logo {
+            height: 6.5rem;
+            /* or smaller if needed */
+            vertical-align: middle;
+            margin-right: 2rem;
+        }
+
+        .hero-text {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .idea-section {
+            background-color: var(--bg-color);
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            height: auto;
+            align-items: center;
+            margin-bottom: 0;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+            position: relative;
+        }
+
+        .idea-content {
+            display: flex;
+            flex-direction: row-reverse;
+            max-width: 1200px;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: space-between;
+            font-family: var(--raleway-200);
+        }
+
+        .idea-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+            padding: 0 5rem;
+            font-size: 1.5rem;
+            color: #000;
+            margin-top: 4rem;
+            margin-right: 2rem;
+        }
+
+        .idea-heading {
+            font-size: 3rem;
+            font-family: var(--raleway-400);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .idea-subheading {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .idea-image {
+            width: 80vh;
+            height: 80vh;
+            background-color: #000;
+            flex-shrink: 0;
+        }
+
+        .raleway-400 {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+         .raleway-200 {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 200;
+            font-style: normal;
+        }
+    .mailing-list-section {
+        background-color: var(--bg-color);
+        padding: 2rem 2rem;
+        text-align: center;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        /* min-height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .mailing-list-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+
+    .mailing-subheading {
+        font-size: 1.5rem;
+        font-family: var(--raleway-200);
+        margin-bottom: 2rem;
+    }
+
+    .mailing-form input[type="email"] {
+        padding: 1rem;
+        font-size: 1rem;
+        width: 70%;
+        max-width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 1rem;
+    }
+
+    .mailing-form button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .mailing-form button:hover {
+        background-color: #009e5a;
+    }
+
+    .mailing-heading {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .site-footer {
+        padding: 0.5rem;
+        background-color: #000;
+        color: #fff;
+        font-family: var(--raleway-200);
+        text-align: center;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-bottom {
+        margin-top: 1rem;
+        text-align: center;
+        border-top: 1px solid #fff;
+        padding-top: 0.5rem;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="hero" id="section-1">
+        <div class="hero-header-text">INTERNATIONAL BOARD SINGAPORE</div>
+        <h1 class="hero-text">
+            <span class="typewriter-wrapper">
+                <span class="typewriter-line1">A new standard in education for the</span><br />
+                <span class="typewriter-line2">next generation.</span>
+            </span>
+        </h1>
+        <!-- <img src="./public/assets/down_arrow.png" alt="Logo" /> -->
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 1rem; right: 2rem; height: 50px;" /> -->
+    </div>
+
+
+
+
+
+    <section class="idea-section" id="section-3">
+        <div class="idea-content">
+            <div class="idea-text">
+                <h2 class="idea-heading">The Idea: </h2>
+                <h2 class="idea-heading">The secret to good education</h2>
+                <p class="idea-subheading"></p>
+                <p>The foundation of great education lies in nurturing curiosity and encouraging independent thinking.</p>
+                <p>By blending technology with proven pedagogy, we ensure students not only learn but love to learn. </p>
+            </div>
+            <img src="./public/assets/idea.png" alt="Idea Illustration" class="idea-image" />
+        </div>
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
+    </section>
+    <section class="idea-section" id="section-4">
+        <div class="idea-content">
+            <div class="idea-text">
+                <h2 class="idea-heading">Long Term Vision</h2>
+                <p class="idea-subheading"></p>
+                <p>Our vision is to transform how education is delivered across the globe—personalized, scalable, and effective.</p>
+                <p>In the long term, we foresee a world where quality education is accessible, empowering every child to thrive in the future economy.</p>
+            </div>
+            <img src="./public/assets/idea_2.png" alt="Idea Illustration" class="idea-image" />
+        </div>
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
+    </section>
+    <section class="idea-section" id="section-5">
+        <div class="idea-content">
+            <div class="idea-text">
+                <h2 class="idea-heading">Products</h2>
+                <p class="idea-subheading"></p>
+                <p>From engaging digital content to real-time assessment tools, our suite of products is designed to support every stakeholder in the learning process—students, teachers, and parents.</p>
+                <p>Each product is crafted with precision, tested rigorously, and evolves continuously based on user feedback and learning outcomes.</p>
+            </div>
+            <img src="./public/assets/idea_3.png" alt="Idea Illustration" class="idea-image" />
+        </div>
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
+    </section>
+
+    <section class="mailing-footer-section" id="section-6" style="scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; justify-content: space-between; background-color: var(--bg-color);">
+      <div class="mailing-list-section" style="padding: 4rem 2rem;">
+        <div class="mailing-list-container">
+          <h2 class="mailing-heading">Stay updated with our latest ideas in education</h2>
+          <p class="mailing-subheading">Join our mailing list to receive the latest updates and insights.</p>
+          <form class="mailing-form">
+            <input type="email" placeholder="Email address" required />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <div class="footer-container" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; gap: 1rem;">
+          <div class="footer-column" style="flex: 1; margin-top: 1rem;">
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">About</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Legal</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Contact</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Jobs</a></p>
+          </div>
+          <div class="footer-column" style="flex: 1; margin-top: 1rem;">
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;"><strong>Blog</strong></a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Books to Read</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">People to Follow</a></p>
+          </div>
+        </div>
+        <div class="footer-bottom" style="border-top: 1px solid #555; margin-top: 1rem; padding-top: 0.5rem; text-align: center; color: #888;">
+          <p>&copy; 2025 International Board Singapore. All rights reserved.</p>
+        </div>
+      </footer>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Pin Hero
+
+        // Fade in Sections
+        gsap.utils.toArray(".section").forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+
+        // Fade in each .idea-section on scroll
+        gsap.utils.toArray(".idea-section").forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+    </script>
+    <script>
+      /*
+      $(document).ready(function () {
+        $('.mailing-list-section').appendTo('.hero');
+      });
+      */
+    </script>
+</body>
+
+</body>
+<script>
+  document.querySelectorAll('img[alt="Scroll Indicator"]').forEach((img, index, list) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      const sections = ['section-1', 'section-2', 'section-3', 'section-4', 'section-5', 'section-6'];
+      const nextId = sections[index + 1];
+      if (nextId) {
+        const nextSection = document.getElementById(nextId);
+        const offset = 100;
+        const top = nextSection.offsetTop + offset;
+        nextSection.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script>
+</html>
