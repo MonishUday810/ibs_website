@@ -4,12 +4,25 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sequoia Style Scroll Animation</title>
     <style>
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .bounce-arrow {
+            animation: bounce 1.2s infinite;
+        }
         html, body {
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
@@ -18,7 +31,7 @@
             scroll-padding-bottom: 0vh;
         }
         :root {
-            --bg-color: #fbf7f0;
+            --bg-color: #f9edda;
             --bg-color-secondary: #fbf7f0
             /* #f9fffb - green
             #fbf7f0 - yellow
@@ -221,9 +234,12 @@
             white-space: nowrap;
             display: inline-block;
             font-weight: bold;
-            font-size: 3rem;
-            font-family: var(--raleway-400);
+            font-size: 5rem;
+            font-family: 'EB Garamond', serif;
             color: #090004;
+            letter-spacing: -0.5px;
+            /* font-family: var(--raleway-400); */
+            margin-bottom: -1.5rem;
         }
 
         .typewriter-line2 {
@@ -233,11 +249,14 @@
             white-space: nowrap;
             display: inline-block;
             font-weight: bold;
-            font-size: 3rem;
-            font-family: var(--raleway-400);
+            font-size: 5rem;
+            font-family: 'EB Garamond', serif;
             color: #090004;
             visibility: hidden;
             animation-fill-mode: forwards;
+            letter-spacing: -0.5px;
+            /* font-family: var(--raleway-400); */
+            margin-bottom: -1.5rem;
         }
 
         @keyframes typing-line1 {
@@ -314,7 +333,7 @@
             flex-direction: column;
             justify-content: flex-start;
             text-align: left;
-            padding: 0 2rem;
+            padding: 0 5rem;
             font-size: 1.5rem;
             color: #000;
             margin-top: 4rem;
@@ -358,11 +377,11 @@
         }
     .mailing-list-section {
         background-color: var(--bg-color);
-        padding: 4rem 2rem;
+        padding: 2rem 2rem;
         text-align: center;
         scroll-snap-align: center;
         scroll-snap-stop: always;
-        min-height: 100vh;
+        /* min-height: 100vh; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -412,7 +431,7 @@
     }
 
     .site-footer {
-        padding: 1.5rem 1rem;
+        padding: 0.5rem;
         background-color: #000;
         color: #fff;
         font-family: var(--raleway-200);
@@ -437,11 +456,11 @@
     }
 
     .footer-bottom {
-        margin-top: 2rem;
+        margin-top: 1rem;
         text-align: center;
         border-top: 1px solid #fff;
-        padding-top: 1rem;
-        margin-top: 2rem;
+        padding-top: 0.5rem;
+        margin-top: 1rem;
         width: 100%;
     }
     </style>
@@ -457,20 +476,11 @@
             </span>
         </h1>
         <!-- <img src="./public/assets/down_arrow.png" alt="Logo" /> -->
-        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" style="position: absolute; bottom: 1rem; right: 2rem; height: 50px;" />
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 1rem; right: 2rem; height: 50px;" /> -->
     </div>
 
 
-    <section class="mailing-list-section" id="section-2">
-      <div class="mailing-list-container">
-        <h2 class="mailing-heading">Stay updated with our latest ideas in education</h2>
-        <p class="mailing-subheading">Join our mailing list to receive the latest updates and insights.</p>
-        <form class="mailing-form">
-          <input type="email" placeholder="Email address" required />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </section>
 
 
 
@@ -485,7 +495,8 @@
             </div>
             <img src="./public/assets/idea.png" alt="Idea Illustration" class="idea-image" />
         </div>
-        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" />
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
     </section>
     <section class="idea-section" id="section-4">
         <div class="idea-content">
@@ -497,7 +508,8 @@
             </div>
             <img src="./public/assets/idea_2.png" alt="Idea Illustration" class="idea-image" />
         </div>
-        <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" />
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
     </section>
     <section class="idea-section" id="section-5">
         <div class="idea-content">
@@ -509,26 +521,40 @@
             </div>
             <img src="./public/assets/idea_3.png" alt="Idea Illustration" class="idea-image" />
         </div>
+        <!-- Scroll Indicator Arrow -->
+        <!-- <img src="./public/assets/down_arrow.png" alt="Scroll Indicator" class="bounce-arrow" style="position: absolute; bottom: 5rem; right: 2rem; height: 50px;" /> -->
     </section>
 
-  <footer class="site-footer">
-    <div class="footer-container" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; gap: 2rem;">
-      <div class="footer-column" style="flex: 1;">
-        <p>About</p>
-        <p>Legal</p>
-        <p>Contact</p>
-        <p>Jobs</p>
+    <section class="mailing-footer-section" id="section-6" style="scroll-snap-align: start; scroll-snap-stop: always; display: flex; flex-direction: column; justify-content: space-between; background-color: var(--bg-color);">
+      <div class="mailing-list-section" style="padding: 4rem 2rem;">
+        <div class="mailing-list-container">
+          <h2 class="mailing-heading">Stay updated with our latest ideas in education</h2>
+          <p class="mailing-subheading">Join our mailing list to receive the latest updates and insights.</p>
+          <form class="mailing-form">
+            <input type="email" placeholder="Email address" required />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
-      <div class="footer-column" style="flex: 1;">
-        <p><strong>Blog</strong></p>
-        <p>Books to Read</p>
-        <p>People to Follow</p>
-      </div>
-    </div>
-    <div class="footer-bottom" style="border-top: 1px solid #555; margin-top: 2rem; padding-top: 1.5rem; text-align: center; color: #888;">
-      <p>&copy; 2025 International Board Singapore. All rights reserved.</p>
-    </div>
-  </footer>
+      <footer class="site-footer">
+        <div class="footer-container" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; gap: 1rem;">
+          <div class="footer-column" style="flex: 1; margin-top: 1rem;">
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">About</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Legal</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Contact</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Jobs</a></p>
+          </div>
+          <div class="footer-column" style="flex: 1; margin-top: 1rem;">
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;"><strong>Blog</strong></a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">Books to Read</a></p>
+            <p style="margin:6px"><a href="#" style="color: white; text-decoration: none;">People to Follow</a></p>
+          </div>
+        </div>
+        <div class="footer-bottom" style="border-top: 1px solid #555; margin-top: 1rem; padding-top: 0.5rem; text-align: center; color: #888;">
+          <p>&copy; 2025 International Board Singapore. All rights reserved.</p>
+        </div>
+      </footer>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -579,14 +605,13 @@
   document.querySelectorAll('img[alt="Scroll Indicator"]').forEach((img, index, list) => {
     img.style.cursor = 'pointer';
     img.addEventListener('click', () => {
-      const sections = ['section-1', 'section-2', 'section-3', 'section-4'];
+      const sections = ['section-1', 'section-2', 'section-3', 'section-4', 'section-5', 'section-6'];
       const nextId = sections[index + 1];
       if (nextId) {
         const nextSection = document.getElementById(nextId);
         const offset = 100;
         const top = nextSection.offsetTop + offset;
-        window.scrollTo({
-          top: top,
+        nextSection.scrollIntoView({
           behavior: 'smooth'
         });
       }
