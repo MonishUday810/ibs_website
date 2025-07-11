@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Board Singapore</title>
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Friz+Quadrata&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white-color: #f8f2ed;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Burger menu hidden by default (desktop) */
+    .burger {
+      display: none;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      background-color: transparent;
+      color: var(--white-color);
+      padding: 1.2rem 2rem;
+      transition: background 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+      z-index: 11;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      overflow: hidden;
+      /* background: radial-gradient(circle at center, #1d2b53 0%, #0c101b 100%); */
+      background-image: url('public/assets/hero_7.png');
+      background-size: cover;
+      background-position: center;
+      /* Remove background zoom transition */
+      padding: 0 3rem;
+      margin: 0;
+      position: relative;
+    }
+    .hero-image {
+      flex: 1;
+      max-width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      animation: fadeInRight 1s ease-in-out;
+      transform: rotate(30deg);
+    }
+
+    @keyframes fadeInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    /*
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    */
+    /*
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20vh;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+      z-index: 1;
+      pointer-events: none;
+    }
+    */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-scroll a {
+      color: var(--white-color);
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: 300;
+      line-height: 1.2;
+      cursor: pointer;
+      display: inline-block;
+      animation: bounceArrow 2s infinite;
+      -webkit-animation: bounceArrow 2s infinite;
+      transition: opacity 0.3s ease;
+      will-change: transform;
+      /* Vendor prefixes for transform for animation support */
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+    }
+    .hero-scroll a:hover {
+      opacity: 0.8;
+    }
+    section.hero {
+      margin: 0;
+      padding: 0;
+    }
+    .hero-content {
+      margin-left: 3rem;
+      color: #ffffff;
+      z-index: 2;
+      position: relative;
+      max-width: 50%;
+    }
+
+    .hero-content {
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .what-we-do .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Fade-in-up animation for .what-we-do when in view */
+    @keyframes fadeInUpSection {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .what-we-do {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .what-we-do.in-view {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUpSection 0.6s ease forwards;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+    }
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: var(--white-color);
+    }
+    .hero-divider {
+      width: 400px;
+      border: 1px solid var(--white-color);
+      margin: 0.5rem 0;
+    }
+    .hero-content .hero-subtext {
+      font-size: 16px;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      color: var(--white-color);
+      line-height: 1.5;
+    }
+    .hero-content p {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white-color);
+    }
+    .hero-content .cta {
+      font-size: 1.1rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      /* Burger menu shown on mobile */
+      .burger {
+        display: block !important;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 11;
+      }
+      .nav-links {
+        display: none !important;
+        flex-direction: column;
+        background: var(--white-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-top: 1rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+      }
+      .nav-links.open {
+        display: flex !important;
+        width: 100%;
+      }
+      .nav-links a {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 0;
+        color: #222;
+        border-bottom: 1px solid #eee;
+      }
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
+      /* Container padding for all .container elements */
+      .container {
+        padding: 0 1rem !important;
+      }
+      /* Hero adjustments */
+      .hero {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 1rem 2rem;
+        height: 100vh;
+        text-align: center;
+        gap: 2rem;
+        background-position: center;
+        padding-top: 0;
+      }
+      .hero-content {
+        margin: 0;
+        max-width: 100%;
+        text-align: center;
+        padding: 0 1rem;
+        margin: 100px
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .hero-scroll {
+        position: static;
+        margin-top: 1rem;
+        display: none;
+      }
+      .hero-image {
+        max-width: 100%;
+        margin-top: 2rem;
+      }
+      .hero-quote {
+        position: static;
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.95rem !important;
+        max-width: 80% !important;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      /* What we do & Curriculum & Partnership sections */
+      .what-we-do .features {
+        flex-direction: column;
+        gap: 2rem !important;
+      }
+      .feature-image img {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+      .feature-text {
+        text-align: center !important;
+        padding: 0 !important;
+      }
+      .what-we-do h2 {
+        font-size: 2rem !important;
+        margin-bottom: 1.25rem !important;
+        margin-top: 0.5rem !important;
+      }
+      /* Our work gallery adjustments */
+      .work-gallery {
+        flex-direction: column;
+      }
+      /* Footer grid stacks vertically */
+      .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-col {
+        max-width: 400px;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem !important;
+      }
+      .hero-content h1 {
+        font-size: 1.6rem !important;
+      }
+      .hero-content h2 {
+        font-size: 1.2rem !important;
+      }
+      .hero-content .hero-subtext {
+        font-size: 1rem !important;
+      }
+      .features {
+        flex-direction: column-reverse !important;
+        gap: 2rem !important;
+      }
+      .footer-grid {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .footer-col {
+        max-width: 100% !important;
+      }
+    }
+    @keyframes bounceArrow {
+      0%, 100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+      }
+      50% {
+        transform: translateY(8px);
+        -webkit-transform: translateY(8px);
+      }
+    }
+  </style>
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Grafik', sans-serif;
+      color: #333;
+      background: var(--white-color);
+    }
+
+    a {
+      text-decoration: none;
+      color: #555;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--white-color);
+      letter-spacing: 0.1rem;
+      font-family: 'Friz Quadrata', serif;
+    }
+
+    .nav-links a {
+      margin-left: 2rem;
+      font-size: 0.95rem;
+      color: var(--white-color);
+    }
+    .nav-links a.active {
+      color: #f8f2ed;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+    }
+
+
+    /* What We Do Section */
+    .what-we-do {
+      position: relative;
+      overflow: hidden;
+      background: var(--white-color);
+      padding: 4rem 2rem;
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 0;
+    }
+
+    .what-we-do .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .what-we-do h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .what-we-do .intro {
+      text-align: center;
+      color: #6b7280;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      column-gap: 3rem;
+      align-items: center;
+    }
+
+    .feature-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .feature-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e0e0;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-text {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 1rem;
+    }
+
+    .feature-text h3 {
+      font-size: 1.75rem;
+      color: #3b4a5a;
+      margin-bottom: 1rem;
+      position: relative;
+      text-align: left;
+    }
+
+    .feature-text p {
+      line-height: 1.8;
+      max-width: 90%;
+      font-size: 1rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+    .what-we-do:nth-of-type(even) {
+      background-color: #eee;
+    }
+    /* Feature image fade in/out */
+    .feature-image {
+      transition: opacity 0.6s ease;
+    }
+    .feature-image.hide {
+      opacity: 0;
+    }
+    .feature-image.show {
+      opacity: 1;
+    }
+
+    .what-we-do::after {
+      content: '';
+      display: block;
+      height: 1px;
+      background: #ddd;
+      margin-top: 0;
+    }
+
+    .features {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .features.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-image img:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column-reverse;
+      }
+    }
+
+    /* Our Work Section */
+    .our-work {
+      background: #f5f7fa;
+      padding: 3rem 1rem;
+    }
+
+    .our-work .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .our-work h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .our-work p {
+      text-align: center;
+      color: #6b7280;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white-color);
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      flex: 1;
+      min-width: 260px;
+      max-width: 320px;
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      color: #235589;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .card p {
+      color: #6b7280;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .card a {
+      color: #235589;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #1a1a1a;
+      color: #ccc;
+      padding: 4rem 2rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .site-footer h4 {
+      color: var(--white-color);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .site-footer p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .social-icons a {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+      filter: invert(100%);
+    }
+
+    .site-footer hr {
+      border: none;
+      border-top: 1px solid #333;
+      margin: 2rem 0;
+    }
+
+    .footer-copy {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-col {
+        max-width: 400px;
+      }
+    }
+
+    /* Work Gallery */
+    .work-gallery {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .work-item {
+      position: relative;
+      flex: 1 1 0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, flex 0.3s ease;
+    }
+
+    .work-item.active {
+      flex: 2 1 0;
+    }
+
+    /* Placeholder for work gallery images */
+
+    .placeholder {
+      width: 100%;
+      padding-top: 80%;
+      /* vertical aspect ratio */
+      background: #f1f3f5;
+      border-radius: 0.5rem;
+      transition: background 0.3s ease;
+    }
+
+    .work-item:hover .placeholder {
+      background: #e2e5e8;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--white-color);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .work-item.active .overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo" style="letter-spacing: 0.1rem;">INTERNATIONAL BOARD <br> SINGAPORE</div>
+      <!-- <div class="burger" aria-label="Menu" role="button">☰</div> -->
+      <nav class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Educational Excellence</h2>
+      <hr class="hero-divider" />
+      <p class="hero-subtext">Delivering world-class education through research and innovation.</p>
+    </div>
+    <!-- <div class="hero-image">
+      <img src="public/assets/world_3.png" alt="Global Reach Illustration">
+    </div> -->
+    <div class="hero-scroll">
+      <a href="#what-we-do">View More<br>↓</a>
+    </div>
+    <div class="hero-quote">“Education is not the filling of a pail, but the lighting of a fire.”<br><span class="quote-author">– W.B. Yeats</span></div>
+  </section>
+  <section id="what-we-do" class="what-we-do">
+    <div class="container">
+      <h2>What We Believe In</h2>
+      <p class="intro">
+       Our main focus - to provide quality education that is accessible, transformative and long lasting.
+      </p>
+      <div class="features">
+        <div class="feature-image">
+          <img src="public/assets/image4.png" alt="Quality Education">
+        </div>
+        <div class="feature-text">
+          <h3>The Student Comes First</h3>
+          <p>
+            Every student learns differently, and that's the point. 
+            We focus on personalized learning experiences, that adapt to the learner's unique needs and interests.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="what-we-do">
+    <div class="container">
+      <div class="features">
+        <div class="feature-text">
+          <h3>Education Begins at Home</h3>
+          <p>
+            We believe in hands-on, real-life learning. Whether it’s asking questions over dinner, solving problems in the kitchen, or exploring the world beyond a screen, 
+            education is most effective when it incorporates everyday experiences.
+          </p>
+        </div>
+        <div class="feature-image">
+          <img src="public/assets/image2.jpg" alt="Curriculum Development & Standards">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="what-we-do">
+    <div class="container">
+      <div class="features">
+        <div class="feature-image">
+          <img src="public/assets/image3.png" alt="Strategic Partnership Development">
+        </div>
+        <div class="feature-text">
+          <h3>Learning that Lasts</h3>
+          <p>
+            Learning is a lifelong journey, and the things we learn today shape our future.
+            Instead of focusing on memorization, we emphasize understanding and application, thus making learners more intuitive and future ready.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--
+  <section class="our-work">
+    <div class="container">
+      <h2>Our work</h2>
+      <p class="intro">
+        Transforming educational landscapes through strategic initiatives and innovative solutions.
+      </p>
+      <div class="work-gallery">
+        <div class="work-item" data-title="Digital Learning Standards"
+          data-desc="Established comprehensive digital literacy standards adopted by 150+ institutions across Southeast Asia.">
+          <div class="placeholder"></div>
+          <div class="overlay">
+            <h3>Digital Learning Standards</h3>
+            <p>Established comprehensive digital literacy standards adopted by 150+ institutions across Southeast Asia.
+            </p>
+          </div>
+        </div>
+        <div class="work-item" data-title="Teacher Development Program"
+          data-desc="Trained over 5,000 educators in modern pedagogical approaches and technology integration.">
+          <div class="placeholder"></div>
+          <div class="overlay">
+            <h3>Teacher Development Program</h3>
+            <p>Trained over 5,000 educators in modern pedagogical approaches and technology integration.</p>
+          </div>
+        </div>
+        <div class="work-item" data-title="Learning Analytics Platform"
+          data-desc="Developed data-driven insights platform for educational performance optimization.">
+          <div class="placeholder"></div>
+          <div class="overlay">
+            <h3>Learning Analytics Platform</h3>
+            <p>Developed data-driven insights platform for educational performance optimization.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>International Board Singapore</h4>
+        <p>Delivering world-class education through research and innovation.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>4 Battery Road,<br>#25-01, Bank of China Building, <br>
+          Singapore 049908</p>
+        <p>+65 6123 4567</p>
+        <p>info@internationalboardsingapore.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="#"><img src="public/assets/twitter.png" alt="X"></a>
+          <a href="#"><img src="public/assets/instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p class="footer-copy">© 2025 International Board Singapore. All rights reserved.</p>
+  </footer>
+  <script>
+    // Wait for DOM and particles.js to be loaded
+    window.addEventListener('DOMContentLoaded', function () {
+
+      // Hero background zoom and image cycling
+      /*
+      const heroEl = document.querySelector('.hero');
+      const images = ["public/assets/hero_1.jpg", "public/assets/hero_2.jpg", "public/assets/hero_3.png"];
+      let idx = 0;
+
+      function cycleHero() {
+        // 1. Disable transition and reset backgroundSize immediately
+        heroEl.style.transition = 'none';
+        heroEl.style.backgroundSize = '100%';
+        heroEl.offsetHeight; // force reflow
+
+        // 2. Re-enable transition for zoom
+        heroEl.style.transition = 'background-size 6s ease-in-out, background-image 1s ease-in-out';
+
+        // 3. Immediately start zoom
+        heroEl.style.backgroundSize = '110%';
+
+        // 4. After zoom duration, swap image and restart
+        setTimeout(() => {
+          idx = (idx + 1) % images.length;
+          // Before changing backgroundImage, only transition the image
+          heroEl.style.transition = 'background-image 1s ease-in-out';
+          heroEl.style.backgroundImage = `url('${images[idx]}')`;
+          // 5. After swapping, call cycleHero again (backgroundSize reset at top)
+          cycleHero();
+        }, 6000);
+      }
+      // start first cycle
+      cycleHero();
+      */
+
+      // Set static hero image
+      // document.querySelector('.hero').style.backgroundImage = "url('public/assets/hero_5.jpg')";
+
+      // Burger menu toggle (moved here)
+      /*
+      document.querySelector('.burger').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('open');
+      });
+      */
+
+      // Work gallery item toggle
+      document.querySelectorAll('.work-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (item.classList.contains('active')) {
+            // If already active, collapse it
+            item.classList.remove('active');
+          } else {
+            // Collapse any other active items
+            document.querySelectorAll('.work-item.active').forEach(i => i.classList.remove('active'));
+            // Activate clicked item
+            item.classList.add('active');
+          }
+        });
+      });
+      // Collapse active item when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.work-item')) {
+          document.querySelectorAll('.work-item.active').forEach(i => i.classList.remove('active'));
+        }
+      });
+
+      // Features animation with IntersectionObserver
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.features').forEach(el => observer.observe(el));
+      // Re-enable IntersectionObserver watching .what-we-do
+      document.querySelectorAll('.what-we-do').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Feature image fade-in/fade-out on scroll
+      const imageObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            entry.target.classList.remove('hide');
+          } else {
+            entry.target.classList.add('hide');
+            entry.target.classList.remove('show');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.feature-image').forEach(el => imageObserver.observe(el));
+
+    });
+  </script>
+</body>
+
+</html>
+  <style>
+    .logo {
+      font-family: 'Friz Quadrata', serif;
+    }
+    .hero-quote {
+      position: absolute;
+      bottom: 15%;
+      right: 5%;
+      max-width: 250px;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-align: right;
+      animation: fadeInQuote 2s ease-in-out forwards;
+      opacity: 0;
+    }
+    .quote-author {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      font-style: normal;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    @keyframes fadeInQuote {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
