@@ -33,29 +33,11 @@
             --droid-serif: 'droid-serif', serif;
         }
 
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .bounce-arrow {
-            animation: bounce 1.2s infinite;
-        }
 
         html,
         body {
-            /* scroll-snap-type: y mandatory; */
             overflow-y: scroll;
             height: 100%;
-            /* scroll-padding-top: 0; */
-            /* scroll-padding-bottom: 0vh; */
         }
 
         @font-face {
@@ -74,10 +56,7 @@
             color: #000000;
             overflow-x: hidden;
             height: 100%;
-            /* overflow-y: hidden; */
         }
-
-        /* Duplicated html, body rule removed */
 
         .hero {
             position: relative;
@@ -103,98 +82,6 @@
             white-space: normal;
         }
 
-        .highlight-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .highlight-word {
-            position: relative;
-            z-index: 2;
-        }
-
-        .highlight-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .caret-animation {
-            display: none;
-        }
-
-        .write-animation {
-            display: inline-block;
-            border-right: 2px solid #00b56a;
-            white-space: nowrap;
-            overflow: hidden;
-            font-weight: bold;
-            font-size: 4.9rem;
-            font-family: 'Courier New', monospace;
-            color: #01653b;
-        }
-
-        @keyframes typing {
-            from {
-                width: 0
-            }
-
-            to {
-                width: 6ch
-            }
-        }
-
-        .draw-letter {
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: draw 0.5s ease forwards;
-        }
-
-        .draw-letter:nth-child(1) {
-            animation-delay: 2.2s;
-        }
-
-        .draw-letter:nth-child(2) {
-            animation-delay: 2.7s;
-        }
-
-        .draw-letter:nth-child(3) {
-            animation-delay: 3.2s;
-        }
-
-        .draw-letter:nth-child(4) {
-            animation-delay: 3.7s;
-        }
-
-        .draw-letter:nth-child(5) {
-            animation-delay: 4.2s;
-        }
-
-        .draw-letter:nth-child(6) {
-            animation-delay: 4.7s;
-        }
-
-        @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        @keyframes caretFade {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes typewriter {
-            to {
-                width: 6ch;
-            }
-        }
 
         .section {
             overflow: visible;
@@ -204,7 +91,6 @@
             transform: none;
             margin-bottom: 1rem;
         }
-
         .section-text {
             font-family: var(--droid-serif);
             font-size: 1.3rem;
@@ -213,12 +99,9 @@
             padding-top: 2rem;
             line-height: 1.6;
         }
-
         .typewriter-line1 {
             font-weight: bold;
             font-size: 1.5rem;
-            overflow: hidden;
-            white-space: nowrap;
             display: inline-block;
             font-family: var(--droid-serif);
             color: #2b2b2c;
@@ -227,11 +110,7 @@
             text-align: center;
             word-wrap: break-word;
         }
-
         .typewriter-line2 {
-            overflow: visible;
-            white-space: normal;
-            display: inline-block;
             font-weight: 100;
             font-size: 1.3rem;
             font-family: var(--droid-serif);
@@ -239,12 +118,7 @@
             letter-spacing: -0.5px;
             word-wrap: break-word;
             text-align: left;
-        }
-
-        .typewriter-wrapper {
             display: inline-block;
-            width: auto;
-            vertical-align: bottom;
         }
 
         .hero-header-logo {
@@ -327,92 +201,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .idea-image {
-            width: 70vh;
-            height: 70vh;
-            background-color: #000;
-            flex-shrink: 0;
-            border-radius: 12px;
-        }
-
-        .raleway-400 {
-            font-family: var(--droid-serif);
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .raleway-200 {
-            font-family: var(--droid-serif);
-            font-weight: 200;
-            font-style: normal;
-        }
-
-        .mailing-list-section {
-            margin-top: 5rem;
-            text-align: center;
-            /* min-height: 100vh; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .mailing-list-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-
-        .mailing-subheading {
-            font-size: 1.5rem;
-            font-family: var(--droid-serif);
-            margin-bottom: 1.5rem;
-        }
-
-        .mailing-form input[type="email"] {
-            padding: 1rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 999px;
-            font-family: var(--droid-serif);
-        }
-
-        .mailing-form {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            flex-direction: row;
-            font-family: var(--droid-serif);
-        }
-
-        .mailing-form input[type="email"] {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .mailing-form button {
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            background-color: #000000;
-            color: white;
-            border: none;
-            border-radius: 999px;
-            cursor: pointer;
-            font-family: var(--droid-serif);
-        }
-
-        .mailing-form button:hover {
-            background-color: #009e5a;
-        }
-
-        .mailing-heading {
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin: 0;
-            font-family: var(--droid-serif);
-        }
 
         .site-footer {
             padding: 0.5rem;
@@ -420,8 +208,6 @@
             color: #fff;
             font-family: var(--droid-serif);
             text-align: center;
-            /* scroll-snap-align: center; */
-            /* scroll-snap-stop: always; */
             padding-left: 2rem;
             padding-right: 2rem;
         }
@@ -480,6 +266,42 @@
         .background-color {
             background: linear-gradient(to bottom, var(--bg-color-secondary) 0%, var(--bg-color) 100%);
         }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-header-text {
+                font-size: 2rem;
+                padding: 0 1rem;
+            }
+
+            .hero-top-left-logo {
+                display: none;
+            }
+
+            .section-text {
+                padding: 1rem;
+                text-align: center;
+            }
+            .typewriter-line1 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+            .typewriter-line2 {
+                font-size: 1.1rem;
+                text-align: center;
+            }
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                gap: 1.5rem;
+            }
+            .footer-column {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
@@ -515,10 +337,10 @@
                     <p style="margin:4px"><a href="jobs.html" style="color: white; text-decoration: none;">Jobs</a></p>
                 </div>
                 <div class="footer-column" style="flex: 1; margin-top: 1rem;">
-                    <p style="margin:4px"><a href="#"
+                    <p style="margin:4px"><a href="blogs.html"
                             style="color: white; text-decoration: none;"><strong>Blog</strong></a></p>
-                    <p style="margin:4px"><a href="#" style="color: white; text-decoration: none;">Books to Read</a></p>
-                    <p style="margin:4px"><a href="#" style="color: white; text-decoration: none;">People to Follow</a>
+                    <p style="margin:4px"><a href="books.html" style="color: white; text-decoration: none;">Books to Read</a></p>
+                    <p style="margin:4px"><a href="books.html" style="color: white; text-decoration: none;">People to Follow</a>
                     </p>
                 </div>
             </div>
