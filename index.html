@@ -608,7 +608,7 @@
         <div class="mailing-list-section">
             <div class="mailing-list-container">
                 <p class="mailing-subheading">Join our mailing list for ideas in education that work</p>
-                <form class="mailing-form">
+                <form class="mailing-form" id="mailing-form">
                     <input type="email" placeholder="Email address" required />
                     <button type="submit">Submit</button>
                 </form>
@@ -725,6 +725,95 @@
         });
     });
 </script>
+
+<style>
+.toast {
+  visibility: hidden;
+  min-width: 300px;
+  max-width: 400px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 20px 10px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 1.1rem;
+  font-family: var(--droid-serif);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease; /* smoother for fade */
+}
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<style>
+.toast.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+</style>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function showToast(message, duration = 3000) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.className = "toast show";
+
+  setTimeout(() => {
+    toast.classList.add("fade-out");
+  }, duration - 500);
+
+  setTimeout(() => {
+    toast.className = "toast";
+  }, duration);
+}
+
+// Test toast on page refresh
+showToast('This is a test toast on refresh!');
+
+document.getElementById('mailing-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const emailInput = this.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+
+    if (!email) {
+        showToast('Please enter a valid email address.');
+        return;
+    }
+
+    try {
+        const response = await fetch('https://w97dtxpuvh.execute-api.ap-south-1.amazonaws.com/prod/parents', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, source:"IBS_WEBSITE" })
+        });
+
+        if (response.ok) {
+            showToast('Thank you for joining our mailing list!');
+            emailInput.value = '';
+        } else {
+            showToast('Something went wrong. Please try again later.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showToast('An error occurred. Please try again.');
+    }
+});
+</script>
+
 </body>
 
 </body>
