@@ -18,6 +18,7 @@
             font-family: var(--droid-serif);
             text-align: left;
             margin-left: 10rem;
+            margin-right: 10rem;
         }
 
         .blogs-section-title {
@@ -27,10 +28,21 @@
             text-align: left;
         }
 
+        .blog-meta {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 2rem;
+            font-family: var(--droid-serif);
+        }
+
         .blog-entry {
             margin-bottom: 2rem;
             border-bottom: 1px solid #ccc;
             padding-bottom: 1.5rem;
+            margin-top: 3rem;
+            gap: 1rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .blog-title {
@@ -38,10 +50,11 @@
             font-weight: bold;
             color: #000;
             text-decoration: none;
+            cursor: default;
         }
 
         .blog-title:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         .blog-date {
@@ -56,7 +69,6 @@
             line-height: 1.6;
             color: #333;
         }
-
         :root {
             --bg-color: #fbf7f0;
             --bg-color-secondary: #f1f2e5;
@@ -129,13 +141,7 @@
             padding-top: 2rem;
             line-height: 1.6;
         }
-
-        .hero-header-logo {
-            height: 6.5rem;
-            vertical-align: middle;
-            margin-right: 2rem;
-        }
-
+    
         .site-footer {
             padding: 0.5rem;
             background-color: #000;
@@ -168,6 +174,10 @@
             width: 100%;
         }
 
+        .background-color {
+            background: linear-gradient(to bottom, var(--bg-color-secondary) 0%, var(--bg-color) 100%);
+        }
+
         .hero-top-left-logo {
             height: clamp(2.5rem, 9vw, 8rem);
             vertical-align: middle;
@@ -184,10 +194,6 @@
             margin-top: 1rem;
             padding-left: 1rem;
             padding-right: 1rem;
-        }
-
-        .background-color {
-            background: linear-gradient(to bottom, var(--bg-color-secondary) 0%, var(--bg-color) 100%);
         }
 
         @media only screen and (max-width: 900px) {
@@ -319,38 +325,64 @@
         </div>
     </section>
     <section class="blogs-list-section">
-        <h2 class="blogs-section-title">Blogs</h2>
-        <div class="blog-entry">
-            <a href="/blogs/books" class="blog-title">Books Everyone Should Read</a>
-            <div class="blog-date">Published on July 10, 2025</div>
-            <p class="blog-snippet">Explore a curated list of must-read books that expand thinking, build character, and inspire action...</p>
-        </div>
-        <div class="blog-entry">
-            <a href="/blogs/people-to-follow" class="blog-title">People to Follow</a>
-            <div class="blog-date">Published on June 28, 2025</div>
-            <p class="blog-snippet">Follow these influential voices across education, innovation, and leadership for insights that spark change...</p>
-        </div>
-    </section>
+      <div class="blogs-section-title">Books Everyone Should Read</div>
+      <div class="blog-meta">Posted on July 15, 2025 · Written by Team IBS</div>
+
+      <div class="blog-entry">
+          <div class="blog-title">1. "To Kill a Mockingbird" by Harper Lee</div>
+          <div class="blog-snippet">
+              This post explores a powerful novel about racial injustice in the Deep South. It presents the world through the innocent eyes of a child. The story delivers timeless lessons on empathy, integrity, and the fight against prejudice. Scout Finch, the young narrator, provides a unique perspective on the events surrounding her father’s defense of a Black man wrongly accused of a crime. Harper Lee masterfully intertwines warmth and humor with harsh social realities. It remains a compelling read for its moral clarity and emotional depth.
+          </div>
+      </div>
+
+      <div class="blog-entry">
+          <div class="blog-title">2. "1984" by George Orwell</div>
+          <div class="blog-snippet">
+              This post explores Orwell’s dystopian masterpiece, which remains disturbingly relevant. It presents a chilling view of a world ruled by surveillance and totalitarianism. Readers are urged to stay vigilant and question authority. Through Winston Smith’s rebellion, Orwell examines the psychological manipulation and historical revisionism used to maintain power. The novel coined terms like “Big Brother” and “thoughtcrime,” which still resonate in political discourse today. It is both a warning and a call to preserve truth and freedom.
+          </div>
+      </div>
+
+      <div class="blog-entry">
+          <div class="blog-title">3. "Sapiens: A Brief History of Humankind" by Yuval Noah Harari</div>
+          <div class="blog-snippet">
+              This post explores an accessible yet deeply insightful history of our species. Harari challenges long-held assumptions about society, economics, and belief. The book redefines how we understand human development. From hunter-gatherers to globalized consumers, Harari maps humanity’s evolution with clarity and wit. He examines how myths, religion, and shared fictions shaped civilizations. It invites readers to question the foundations of modern life and consider our future trajectory.
+          </div>
+      </div>
+
+      <div class="blog-entry">
+          <div class="blog-title">4. "The Alchemist" by Paulo Coelho</div>
+          <div class="blog-snippet">
+              This post explores a poetic tale of self-discovery and pursuing one’s destiny. "The Alchemist" blends mysticism and wisdom in a compelling narrative. It inspires countless readers to follow their dreams with courage and heart. Santiago’s journey through the desert mirrors the spiritual journey many take in search of purpose. Coelho uses symbols and parables to convey powerful truths. The novel encourages trusting the universe and listening to one’s heart.
+          </div>
+      </div>
+
+      <div class="blog-entry">
+          <div class="blog-title">5. "Man's Search for Meaning" by Viktor E. Frankl</div>
+          <div class="blog-snippet">
+              This post explores a profound book written by a Holocaust survivor and psychiatrist. It reflects on suffering, resilience, and the quest for meaning in life. The narrative is both harrowing and uplifting. Frankl introduces logotherapy, a psychological approach that emphasizes purpose over pleasure. His experiences in concentration camps give depth to his theories. It’s a timeless guide to finding meaning even in the darkest of circumstances.
+          </div>
+      </div>
+  </section>
     <section class="mailing-footer-section" id="section-6"
         style="display: flex; flex-direction: column; justify-content: space-between; margin-top: 1rem;">
         <footer class="site-footer">
             <div class="footer-container"
                 style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; gap: 1rem;">
                 <div class="footer-column" style="flex: 1; margin-top: 1rem;">
-                    <p style="margin:4px"><a href="/about.html#about"
+                    <p style="margin:4px"><a href="/about#about"
                             style="color: white; text-decoration: none;">About</a></p>
-                    <p style="margin:4px"><a href="/legal.html" style="color: white; text-decoration: none;">Legal</a>
+                    <p style="margin:4px"><a href="/legal" style="color: white; text-decoration: none;">Legal</a>
                     </p>
-                    <p style="margin:4px"><a href="/about.html#contact"
+                    <p style="margin:4px"><a href="/about#contact"
                             style="color: white; text-decoration: none;">Contact</a></p>
-                    <p style="margin:4px"><a href="/jobs.html" style="color: white; text-decoration: none;">Jobs</a></p>
+                    <p style="margin:4px"><a href="/jobs" style="color: white; text-decoration: none;">Jobs</a></p>
                 </div>
                 <div class="footer-column" style="flex: 1; margin-top: 1rem;">
-                    <p style="margin:4px"><a href="/blogs.html"
+                    <p style="margin:4px"><a href="/blogs"
                             style="color: white; text-decoration: none;"><strong>Blog</strong></a></p>
-                    <p style="margin:4px"><a href="/books.html" style="color: white; text-decoration: none;">Books to
+                    <p style="margin:4px"><a href="/blogs/books" style="color: white; text-decoration: none;">Books to
                             Read</a></p>
-                    <p style="margin:4px"><a href="people.html" style="color: white; text-decoration: none;">People to
+                    <p style="margin:4px"><a href="/blogs/people" style="color: white; text-decoration: none;">People to
                             Follow</a>
                     </p>
                 </div>
