@@ -353,6 +353,7 @@
         .mailing-list-container {
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
         }
 
 
@@ -562,6 +563,12 @@
             line-height: 1.2;
             margin-bottom: 0;
         }
+        .toast {
+            font-size: 0.9rem !important;
+            padding: 15px !important;
+            top: -50px !important;
+            width: 100% !important;
+        }
     }
 
     @media only screen and (max-width: 535px) {
@@ -586,11 +593,23 @@
         .idea-section {
             padding: 4rem 2rem 0 0;
         }
+        .toast {
+            font-size: 0.9rem !important;
+            padding: 15px !important;
+            top: -60px !important;
+            width: 100% !important;
+        }
     }
 
     @media only screen and (max-width: 376px) {
         .hero-header-text {
             font-size: 2rem;
+        }
+        .toast {
+            font-size: 0.9rem !important;
+            padding: 15px !important;
+            top: -60px !important;
+            width: 100% !important;
         }
     }
     </style>
@@ -608,6 +627,7 @@
         </h1>
         <div class="mailing-list-section">
             <div class="mailing-list-container">
+                <div id="toast" class="toast"></div>
                 <p class="mailing-subheading">Join our mailing list for ideas in education that work</p>
                 <form class="mailing-form" id="mailing-form">
                     <input type="email" placeholder="Email address" required />
@@ -734,40 +754,35 @@
 
 <style>
 .toast {
+  position: absolute;
+  top: -80px;
+  left: 0;
   visibility: hidden;
-  min-width: 300px;
-  max-width: 400px;
+  width: 100%;
   background-color: #333;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 20px 10px;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  font-size: 1.1rem;
-  font-family: var(--droid-serif);
+  padding: 30px;
+  font-size: 1rem;
+  font-family: var(--raleway-400);
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease; /* smoother for fade */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  box-sizing: border-box;
 }
+
 .toast.show {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
 }
-</style>
 
-<style>
 .toast.fade-out {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(10px);
 }
-</style>
 
-<div id="toast" class="toast"></div>
+</style>
 
 <script>
 function showToast(message, duration = 3000) {
@@ -783,6 +798,16 @@ function showToast(message, duration = 3000) {
     toast.className = "toast";
   }, duration);
 }
+
+  window.addEventListener("DOMContentLoaded", function () {
+    console.log("loading")
+    const shouldShowToast = localStorage.getItem("waitlistToast");
+    console.log(shouldShowToast)
+    if (shouldShowToast) {
+      showToast("You've been added to the waitlist!");
+      localStorage.removeItem("waitlistToast");
+    }
+  });
 
 document.getElementById('mailing-form').addEventListener('submit', async function (e) {
     e.preventDefault();

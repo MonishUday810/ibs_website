@@ -1,0 +1,29 @@
+<body>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get("ref");
+    console.log(ref)
+
+    if (ref) {
+      fetch("https://w97dtxpuvh.execute-api.ap-south-1.amazonaws.com/prod/parents", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: ref, source: "IBS_WEBSITE" })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("waitlistToast", "true");
+
+          window.location.href = "../index.html";
+        })
+        .catch((err) => {
+          console.error("Error adding to waitlist:", err);
+          window.location.href = "../index.html";
+        });
+    } else {
+      window.location.href = "/";
+    }
+  </script>
+</body>
